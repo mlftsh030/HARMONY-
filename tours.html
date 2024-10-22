@@ -13,23 +13,17 @@
     <script nonce="84a158de-7f77-47a8-9f18-5359bd63bec1">(function (w, d) { !function (bg, bh, bi, bj) { bg[bi] = bg[bi] || {}; bg[bi].executed = []; bg.zaraz = { deferred: [], listeners: [] }; bg.zaraz.q = []; bg.zaraz._f = function (bk) { return function () { var bl = Array.prototype.slice.call(arguments); bg.zaraz.q.push({ m: bk, a: bl }) } }; for (const bm of ["track", "set", "debug"]) bg.zaraz[bm] = bg.zaraz._f(bm); bg.zaraz.init = () => { var bn = bh.getElementsByTagName(bj)[0], bo = bh.createElement(bj), bp = bh.getElementsByTagName("title")[0]; bp && (bg[bi].t = bh.getElementsByTagName("title")[0].text); bg[bi].x = Math.random(); bg[bi].w = bg.screen.width; bg[bi].h = bg.screen.height; bg[bi].j = bg.innerHeight; bg[bi].e = bg.innerWidth; bg[bi].l = bg.location.href; bg[bi].r = bh.referrer; bg[bi].k = bg.screen.colorDepth; bg[bi].n = bh.characterSet; bg[bi].o = (new Date).getTimezoneOffset(); if (bg.dataLayer) for (const bt of Object.entries(Object.entries(dataLayer).reduce(((bu, bv) => ({ ...bu[1], ...bv[1] })), {}))) zaraz.set(bt[0], bt[1], { scope: "page" }); bg[bi].q = []; for (; bg.zaraz.q.length;) { const bw = bg.zaraz.q.shift(); bg[bi].q.push(bw) } bo.defer = !0; for (const bx of [localStorage, sessionStorage]) Object.keys(bx || {}).filter((bz => bz.startsWith("_zaraz_"))).forEach((by => { try { bg[bi]["z_" + by.slice(7)] = JSON.parse(bx.getItem(by)) } catch{ bg[bi]["z_" + by.slice(7)] = bx.getItem(by) } })); bo.referrerPolicy = "origin"; bo.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(bg[bi]))); bn.parentNode.insertBefore(bo, bn) };["complete", "interactive"].includes(bh.readyState) ? zaraz.init() : bg.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: Georgia, 'Times New Roman', Times, serif;
             line-height: 1.6;
+            height: 100%;
             margin: 0;
             padding: 0;
             color: #333;
-            font-family:Georgia, 'Times New Roman', Times, serif;
-
         }
         .container {
             width: 80%;
             margin: auto;
             overflow: hidden;
-        }
-        h2 {
-            color: #0077be;
-            text-align: center;
-       
         }
         header {
             background: #ffffff;
@@ -40,6 +34,74 @@
             max-width: 300px;
             height: auto;
         }
+        #services {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+        
+        #services h2 {
+            color: #0077be;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 30px;
+            justify-content: center;
+        }
+        
+        .service-item {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            transition: box-shadow 0.3s ease;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: left;
+        }
+        
+        .service-item:hover {
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .service-item h3 {
+            color: #0077be;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .service-item p {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            #services h2 {
+                font-size: 2em;
+            }
+        
+            .service-item {
+                padding: 15px;
+            }
+        
+            .service-item img {
+                height: 150px;
+            }
+        }
+        
         nav {
             float: right;
             margin-top: 10px;
@@ -61,22 +123,22 @@
         nav a:hover {
             color: #e8491d;
         }
-        #tours {
+        #services {
             padding: 20px 0;
         }
-        .tour {
+        .service {
             display: flex;
             align-items: center;
             margin-bottom: 30px;
             cursor: pointer;
         }
-        .tour img {
+        .service img {
             width: 200px;
             height: 150px;
             object-fit: cover;
             margin-right: 20px;
         }
-        .tour-info h3 {
+        .service-info h3 {
             color: #0077be;
         }
         .modal {
@@ -96,13 +158,8 @@
             padding: 20px;
             border: 1px solid #888;
             width: 80%;
+            text-align: center;
             max-width: 600px;
-        }
-        .modal img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            margin-bottom: 20px;
         }
         .close {
             color: #aaa;
@@ -116,13 +173,32 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .contact-btn {
+            background-color: #0077be;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+        
+        .contact-btn:hover {
+            background-color: #005f9b;
+        }
+
         footer {
             background: #0077be;
             color: #ffffff;
             text-align: center;
             padding: 20px 0;
             clear: both;
+            bottom: 0;
+            left: 0;
         }
+        /* Hamburger Menu */
         .menu-icon {
             display: none;
             cursor: pointer;
@@ -132,9 +208,12 @@
         .menu-icon div {
             width: 35px;
             height: 4px;
-            background-color: #000000;
+            background-color: #0b0b0c;
             margin: 6px 0;
         }
+        .content {
+            flex: 1;
+          }
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -168,7 +247,47 @@
                 float: left;
             }
         }
-    </style>
+    .contact-btn {
+        background-color: #0077be;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        text-decoration: none;
+    }
+    
+    .contact-btn:hover {
+        background-color: #005f9b;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+    }
+    .modal img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
+</style>
 </head>
 <body>
     <header>
@@ -191,61 +310,45 @@
             </nav>
         </div>
     </header>
-
-    <section id="tours">
-         <div class="container">
+    <section id="services">
+        <div class="container">
             <h2>Our Tours</h2>
-            <div class="tour" onclick="openModal('capetown')">
-                <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_ba02e6bf.jpg" alt="Cape Town City Tour">
-                <div class="tour-info">
-                    <h3>Cape Town City Tour</h3>
-                    </div>
-            </div>
-            <div class="tour" onclick="openModal('peninsula')">
-                <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_53777ba9.jpg" alt="Cape Point Peninsula Tour">
-                <div class="tour-info">
-                    <h3>Cape Point Peninsula Tour</h3>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('capetown')">
+                    <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_ba02e6bf.jpg" alt="Cape Town City Tour">
+                        <h3>Cape Town City Tour</h3>
                 </div>
-            </div>
-            <div class="tour" onclick="openModal('winelands')">
-                <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_15131f5c.jpg" alt="Cape Winelands Tour">
-                <div class="tour-info">
+                <div class="service-item" onclick="openModal('peninsula')">
+                    <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_53777ba9.jpg" alt="Cape Point Peninsula Tour">
+                        <h3>Cape Point Peninsula Tour</h3>
+                </div>
+                <div class="service-item" onclick="openModal('winelands')">
+                    <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_15131f5c.jpg" alt="Cape Winelands Tour">
                     <h3>Cape Winelands Tour</h3>
-                   </div>
-            </div>
-            <div class="tour" onclick="openModal('overberg')">
-                <img src="images/overberg.jpg" alt="Overberg Tour">
-                <div class="tour-info">
-                    <h3>Overberg Tour</h3>
-                    </div>
-            </div>
-            <div class="tour" onclick="openModal('safari')">
-                <img src="images/WhatsApp Image 2024-09-05 at 09.46.15_ed0e9f14.jpg" alt="Cape Town Safari Tours">
-                <div class="tour-info">
+                </div>
+                <div class="service-item" onclick="openModal('overberg')">
+                    <img src="images/overberg.jpg" alt="Overberg Tour">
+                        <h3>Overberg Tour</h3>
+                </div>
+                <div class="service-item" onclick="openModal('safari')">
+                    <img src="images/WhatsApp Image 2024-09-05 at 09.46.15_ed0e9f14.jpg" alt="Cape Town Safari Tours">
                     <h3>Cape Town Safari Tours</h3>
-                    </div>
-            </div>
-            <div class="tour" onclick="openModal('gardenroute')">
-                <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_fc8fdce2.jpg" alt="Garden Route Tour">
-                <div class="tour-info">
+                </div>
+                <div class="service-item" onclick="openModal('safari')">
+                    <img src="images/WhatsApp Image 2024-09-05 at 09.45.52_fc8fdce2.jpg" alt="Garden Route Tour">
                     <h3>Garden Route Tour</h3>
-                   </div>
-            </div>
-            <div class="tour" onclick="openModal('township')">
-                <img src="images/township.jpg" alt="Cape Town Township Tours">
-                <div class="tour-info">
+                </div>
+                <div class="service-item" onclick="openModal('township')">
+                    <img src="images/township.jpg" alt="Cape Town Township Tours">
                     <h3>Cape Town Township Tours</h3>
-                    </div>
-            </div>
-            <div class="tour" onclick="openModal('robben')">
-                <img src="images/roben.jpg" alt="Robben Island Tour">
-                <div class="tour-info">
+                </div>
+                <div class="service-item" onclick="openModal('robben')">
+                    <img src="images/roben.jpg" alt="Robben Island Tour">
                     <h3>Robben Island Tour</h3>
-                    </div>
+                </div>
             </div>
         </div>
     </section>
-
     <div id="modal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
